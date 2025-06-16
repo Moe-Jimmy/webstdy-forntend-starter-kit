@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  /* colors */
+  --color-primary: #ddd;
+  --color-secondary1: #09c:
+  --color-primary-dark: #1d2963;
+  --color-second-dark: #005955;
+  --color-second-light: #ccf0ee;
+
+  /* shadow  */
+  --shadow-shadow1: 0px 4px 4px 0px rgba(144, 144, 144, 0.25);
+}
+
+@utility container {
+  padding-inline: 1rem;
+  margin-inline: auto;
+}
+
+body {
+  font-family: "Roboto";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
