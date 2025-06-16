@@ -1,6 +1,5 @@
 <template>
   <header>
-    <DefaultNav />
     <SideNav />
   </header>
 

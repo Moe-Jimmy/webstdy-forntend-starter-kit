@@ -8,12 +8,10 @@
 <script lang="ts" setup>
 const { locale, locales } = useI18n();
 
-onMounted(() => {
-  useHead({
-    htmlAttrs: {
-      lang: locale.value == "en" ? "en" : "ar",
-      dir: locale.value == "en" ? "ltr" : "rtl",
-    },
-  });
+useHead({
+  htmlAttrs: {
+    lang: locale,
+    dir: computed(() => (locale.value === "ar" ? "rtl" : "ltr")),
+  },
 });
 </script>

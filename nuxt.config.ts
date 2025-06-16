@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     "nuxt-aos",
   ],
+  ui: {
+    colorMode: false,
+  },
   css: ["./assets/css/main.css"],
   i18n: {
     locales: [
@@ -39,24 +42,24 @@ export default defineNuxtConfig({
       alwaysRedirect: false,
     },
   },
-  fonts: {
-    families: [
-      {
-        name: "Roboto",
-        provider: "google",
-        weights: [400, 600],
-        styles: ["normal", "italic"],
-        subsets: ["latin"],
-      },
-      {
-        name: "Poppins",
-        provider: "google",
-        weights: [600, 700],
-        styles: ["normal"],
-        subsets: ["latin"],
-      },
-    ],
-  },
+  // fonts: {
+  //   families: [
+  //     {
+  //       name: "Roboto",
+  //       provider: "google",
+  //       weights: [400, 600],
+  //       styles: ["normal", "italic"],
+  //       subsets: ["latin"],
+  //     },
+  //     {
+  //       name: "Poppins",
+  //       provider: "google",
+  //       weights: [600, 700],
+  //       styles: ["normal"],
+  //       subsets: ["latin"],
+  //     },
+  //   ],
+  // },
   aos: {
     offset: 120,
     delay: 200,

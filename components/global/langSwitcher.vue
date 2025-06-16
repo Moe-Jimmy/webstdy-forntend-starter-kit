@@ -18,19 +18,6 @@ const availableLocales = computed(() => {
   return locales.value.filter((i) => i.code !== locale.value);
 });
 
-watch(
-  () => locale.value,
-  (val) => {
-    if (val) {
-      useHead({
-        htmlAttrs: {
-          lang: locale.value == "en" ? "en" : "ar",
-          dir: locale.value == "en" ? "ltr" : "rtl",
-        },
-      });
-    }
-  }
-);
 </script>
 
 <style scoped></style>

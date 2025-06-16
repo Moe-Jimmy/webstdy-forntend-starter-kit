@@ -37,12 +37,12 @@
 
     <!-- ------------------side Nav---------------------  -->
     <div
-      class="block lg:hidden top-0 side-nav start-0 absolute max-h-screen h-screen shadow-md bg-primary overflow-hidden transition-all duration-300 ease-in-out"
+      class="block lg:hidden top-0 side-nav end-0 absolute max-h-screen h-screen shadow-md bg-primary overflow-hidden transition-all duration-300 ease-in-out"
       :class="isSideOpened ? 'w-[300px]' : 'w-0'"
     >
       <div
         @click="closeSideMenu"
-        class="flex justify-center items-center rounded-full w-[40px] h-[40px] bg-gray-200 hover:bg-gray-400 duration-200 transition-colors cursor-pointer ms-auto m-4"
+        class="flex justify-center items-center rounded-full w-[40px] h-[40px] bg-gray-200 hover:bg-gray-400 duration-200 transition-colors cursor-pointer ms-auto mx-4 my-6"
       >
         <UIcon name="i-lucide:x" class="text-xl" />
       </div>
@@ -86,8 +86,8 @@ const currentLocale = computed(() =>
 
 const sideIcon = computed(() =>
   currentLocale.value?.dir === "rtl"
-    ? "lucide:align-right"
-    : "lucide:align-left"
+    ? "lucide:align-left"
+    : "lucide:align-right"
 );
 
 function toggleSideMenu() {
