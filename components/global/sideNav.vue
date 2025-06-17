@@ -65,15 +65,15 @@ const navLinks = [
   },
   {
     name: "services",
-    path: "/services",
+    path: "/",
   },
   {
     name: "products",
-    path: "/products",
+    path: "/",
   },
   {
     name: "contact-us",
-    path: "/contact-us",
+    path: "/",
   },
 ];
 // Side Nav
