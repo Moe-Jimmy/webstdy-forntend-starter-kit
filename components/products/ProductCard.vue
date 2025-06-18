@@ -53,9 +53,11 @@
       <div class="p-4 flex justify-between items-center">
         <div>
           <div class="flex gap-2 items-center" v-if="car.show_status">
-            <span v-if="car.have_discount" class="line-through text-gray-600">{{
-              car.price_before_discount
-            }}</span>
+            <span
+              v-if="car.price_before_discount"
+              class="line-through text-gray-600"
+              >{{ car.price_before_discount }}</span
+            >
             <span v-if="car.price" class="text-second-dark">{{
               car.price
             }}</span>
@@ -67,7 +69,7 @@
             <SVGSaudiRiyal />
           </div>
           <div v-else class="capitalize">
-            {{ car.price_field_status.split("_").join(" ") }}
+            {{ car.price_field_status }}
           </div>
           <p v-if="car.show_status" class="text-second-dark">
             {{ $t("priceTax") }}

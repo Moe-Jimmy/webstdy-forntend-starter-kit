@@ -16,6 +16,12 @@ export const useWishlistStore = defineStore("wishlist", {
     isFavorite(id: number) {
       return this.wishlistIds.includes(id);
     },
+    removeUnavailable(unavailableIds: number[]) {
+      this.wishlistIds = this.wishlistIds.filter(
+        (id) => !unavailableIds.includes(id)
+      );
+      this.saveToStorage();
+    },
     loadFromStorage() {
       const stored = localStorage.getItem("wishlistIds");
       if (stored) {
