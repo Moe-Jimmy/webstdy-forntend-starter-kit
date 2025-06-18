@@ -3,14 +3,14 @@
     class="sticky top-0 flex z-[99] h-[88px] container max-w-full items-center justify-between shadow-md transition-all duration-300 bg-primary"
   >
     <div class="brand">
-      <NuxtLink to="/" class="text-[2rem] text-secondary1">{{
+      <NuxtLink :to="localePath('/')" class="text-[2rem] text-secondary1">{{
         $t("brand")
       }}</NuxtLink>
     </div>
     <div class="hidden lg:block">
       <ul class="flex gap-4">
         <li v-for="link in navLinks" :key="link.name">
-          <NuxtLink :to="link.path" class="text-xl">{{
+          <NuxtLink :to="localePath(link.path)" class="text-xl">{{
             $t(link.name)
           }}</NuxtLink>
         </li>
@@ -45,9 +45,12 @@
     >
       <ul class="flex flex-col text-center py-4 gap-3">
         <li v-for="link in navLinks" :key="link.name">
-          <NuxtLink @click="closeDefaultMenu" :to="link.path" class="text-xl">{{
-            $t(link.name)
-          }}</NuxtLink>
+          <NuxtLink
+            @click="closeDefaultMenu"
+            :to="localePath(link.path)"
+            class="text-xl"
+            >{{ $t(link.name) }}</NuxtLink
+          >
         </li>
       </ul>
     </div>
@@ -73,6 +76,7 @@ const navLinks = [
     path: "/",
   },
 ];
+const localePath = useLocalePath();
 // default Nav
 const isDefaultOpened = ref<boolean>(false);
 const menuHeight = ref<number>(0);

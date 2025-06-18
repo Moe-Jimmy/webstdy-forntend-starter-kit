@@ -4,5 +4,10 @@
   "hello": "اهلا وسهلا",
   "brand": "الماركه",
   "services": "الخدمات",
-  "contact-us": "تواصل معنا"
+  "contact-us": "تواصل معنا",
+  "addFavoriteMessage": "تمت إضافة العنصر إلى المفضلة بنجاح",
+  "removeFavoriteMessage": "تمت إزالة العنصر من المفضلة",
+  "addItem": "تمت الإضافة بنجاح",
+  "removeItem": "تمت الإزالة بنجاح",
+  "priceTax": "شامل الضريبة"
 }

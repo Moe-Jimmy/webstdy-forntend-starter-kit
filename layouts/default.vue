@@ -1,9 +1,9 @@
 <template>
-  <header>
+  <header class="mb-10">
     <SideNav />
   </header>
 
-  <div>
+  <div class="container">
     <slot />
   </div>
 

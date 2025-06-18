@@ -9,9 +9,7 @@ import type {
 
 export function useApi() {
   const { $i18n } = useNuxtApp();
-  const {
-    public: { apiBaseUrl },
-  } = useRuntimeConfig();
+  const config = useRuntimeConfig();
   const toast = useToast();
   // Create Axios instance
   const apiClient: AxiosInstance = axios.create({
@@ -36,7 +34,7 @@ export function useApi() {
 
   // Response interceptor: handle errors
   apiClient.interceptors.response.use(
-    (response) => response,
+    (response: AxiosResponse) => response,
     (error) => {
       if (error.response) {
         toast.add({
