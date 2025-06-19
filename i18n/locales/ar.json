@@ -9,5 +9,8 @@
   "removeFavoriteMessage": "تمت إزالة العنصر من المفضلة",
   "addItem": "تمت الإضافة بنجاح",
   "removeItem": "تمت الإزالة بنجاح",
-  "priceTax": "شامل الضريبة"
+  "priceTax": "شامل الضريبة",
+  "loading": "جار التحميل...",
+  "wishlistEmpty": "قائمة المفضلة فارغة",
+  "goBackHome": "العودة إلى الرئيسية"
 }

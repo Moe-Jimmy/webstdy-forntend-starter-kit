@@ -9,5 +9,8 @@
   "removeFavoriteMessage": "Item Removed From favorites",
   "addItem": "Added Successfully",
   "removeItem": "Removed Successfully",
-  "priceTax": "Includes tax"
+  "priceTax": "Includes tax",
+  "loading": "Loading...",
+  "wishlistEmpty": "Your wishlist is empty",
+  "goBackHome": "Go back to home"
 }
