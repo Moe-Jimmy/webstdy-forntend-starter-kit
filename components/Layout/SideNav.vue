@@ -64,8 +64,8 @@ const navLinks = [
     path: "/",
   },
   {
-    name: "services",
-    path: "/",
+    name: "order",
+    path: "/order",
   },
   {
     name: "products",

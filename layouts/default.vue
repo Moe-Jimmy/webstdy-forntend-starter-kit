@@ -1,6 +1,6 @@
 <template>
   <header class="mb-10">
-    <SideNav />
+    <LayoutSideNav />
   </header>
 
   <div class="container">

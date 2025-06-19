@@ -12,5 +12,6 @@
   "priceTax": "Includes tax",
   "loading": "Loading...",
   "wishlistEmpty": "Your wishlist is empty",
-  "goBackHome": "Go back to home"
+  "goBackHome": "Go back to home",
+  "order": "Order"
 }
