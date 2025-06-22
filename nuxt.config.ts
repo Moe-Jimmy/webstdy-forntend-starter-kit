@@ -9,12 +9,16 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxt/fonts",
     "nuxt-aos",
+    "@nuxt/eslint",
   ],
   ui: {
     colorMode: false,
   },
   css: ["./assets/css/main.css"],
   i18n: {
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
     locales: [
       {
         language: "en",
@@ -48,5 +52,13 @@ export default defineNuxtConfig({
     duration: 400,
     easing: "ease",
     once: false,
+  },
+  runtimeConfig: {
+    public: {
+      apiBase: "https://admin.nasiralmutayri.com/api",
+    },
+  },
+  imports: {
+    dirs: ["composables", "stores"],
   },
 });

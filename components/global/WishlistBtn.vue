@@ -1,16 +1,3 @@
-<template>
-  <UIcon
-    :name="
-      isFavorite
-        ? 'i-material-symbols:favorite'
-        : 'i-material-symbols:favorite-outline'
-    "
-    class="text-3xl cursor-pointer"
-    :class="isFavorite ? 'text-red-600' : 'text-black'"
-    @click="toggleFavorite"
-  />
-</template>
-
 <script setup lang="ts">
 const props = defineProps<{
   carId: number;
@@ -35,5 +22,17 @@ function toggleFavorite() {
   });
 }
 </script>
+<template>
+  <UIcon
+    :name="
+      isFavorite
+        ? 'i-material-symbols:favorite'
+        : 'i-material-symbols:favorite-outline'
+    "
+    class="cursor-pointer text-3xl"
+    :class="isFavorite ? 'text-red-600' : 'text-black'"
+    @click="toggleFavorite"
+  />
+</template>
 
 <style scoped></style>

@@ -1,62 +1,3 @@
-<template>
-  <nav
-    class="sticky top-0 flex z-[99] h-[88px] container max-w-full items-center justify-between shadow-md transition-all duration-300 bg-primary"
-  >
-    <div class="brand">
-      <NuxtLink :to="localePath('/')" class="text-[2rem] text-secondary1">{{
-        $t("brand")
-      }}</NuxtLink>
-    </div>
-    <div class="hidden lg:block">
-      <ul class="flex gap-4">
-        <li v-for="link in navLinks" :key="link.name">
-          <NuxtLink :to="localePath(link.path)" class="text-xl">{{
-            $t(link.name)
-          }}</NuxtLink>
-        </li>
-      </ul>
-    </div>
-    <div class="icons flex gap-[6px] sm:gap-4 items-center">
-      <LangSwitcher />
-      <NuxtLink
-        :to="localePath('/wishlist')"
-        class="flex justify-center items-center rounded-full w-[40px] h-[40px] bg-gray-200 hover:bg-gray-400 duration-200 transition-colors cursor-pointer"
-      >
-        <UIcon name="i-lucide:heart" class="text-xl" />
-      </NuxtLink>
-      <div
-        @click="toggleSideMenu"
-        class="lg:hidden flex justify-center items-center rounded-full w-[40px] h-[40px] bg-gray-200 hover:bg-gray-400 duration-200 transition-colors cursor-pointer"
-      >
-        <UIcon :name="sideIcon" class="text-xl" />
-      </div>
-    </div>
-
-    <!-- ------------------side Nav---------------------  -->
-    <div
-      class="block lg:hidden top-0 side-nav end-0 absolute max-h-screen h-screen shadow-md bg-primary overflow-hidden transition-all duration-300 ease-in-out"
-      :class="isSideOpened ? 'w-[300px]' : 'w-0'"
-    >
-      <div
-        @click="closeSideMenu"
-        class="flex justify-center items-center rounded-full w-[40px] h-[40px] bg-gray-200 hover:bg-gray-400 duration-200 transition-colors cursor-pointer ms-auto mx-4 my-6"
-      >
-        <UIcon name="i-lucide:x" class="text-xl" />
-      </div>
-      <ul class="flex flex-col gap-3 ms-4">
-        <li v-for="link in navLinks" :key="link.name">
-          <NuxtLink
-            @click="closeSideMenu"
-            :to="localePath(link.path)"
-            class="text-xl"
-            >{{ $t(link.name) }}</NuxtLink
-          >
-        </li>
-      </ul>
-    </div>
-  </nav>
-</template>
-
 <script setup lang="ts">
 const navLinks = [
   {
@@ -78,15 +19,14 @@ const navLinks = [
 ];
 // Side Nav
 const isSideOpened = ref<boolean>(false);
-const localePath = useLocalePath();
 const { locale, locales } = useI18n();
 const currentLocale = computed(() =>
-  locales.value.find((l) => l.code === locale.value)
+  locales.value.find((l) => l.code === locale.value),
 );
 const sideIcon = computed(() =>
   currentLocale.value?.dir === "rtl"
     ? "lucide:align-left"
-    : "lucide:align-right"
+    : "lucide:align-right",
 );
 
 function toggleSideMenu() {
@@ -96,4 +36,62 @@ function closeSideMenu() {
   isSideOpened.value = false;
 }
 </script>
+<template>
+  <nav
+    class="bg-primary sticky top-0 z-[99] container flex h-[88px] max-w-full items-center justify-between shadow-md transition-all duration-300"
+  >
+    <div class="brand">
+      <NuxtLinkLocale to="/" class="text-secondary1 text-[2rem]">{{
+        $t("brand")
+      }}</NuxtLinkLocale>
+    </div>
+    <div class="hidden lg:block">
+      <ul class="flex gap-4">
+        <li v-for="link in navLinks" :key="link.name">
+          <NuxtLinkLocale :to="link.path" class="text-xl">{{
+            $t(link.name)
+          }}</NuxtLinkLocale>
+        </li>
+      </ul>
+    </div>
+    <div class="icons flex items-center gap-[6px] sm:gap-4">
+      <LangSwitcher />
+      <NuxtLinkLocale
+        :to="'/wishlist'"
+        class="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full bg-gray-200 transition-colors duration-200 hover:bg-gray-400"
+      >
+        <UIcon name="i-lucide:heart" class="text-xl" />
+      </NuxtLinkLocale>
+      <div
+        class="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full bg-gray-200 transition-colors duration-200 hover:bg-gray-400 lg:hidden"
+        @click="toggleSideMenu"
+      >
+        <UIcon :name="sideIcon" class="text-xl" />
+      </div>
+    </div>
+
+    <!-- ------------------side Nav---------------------  -->
+    <div
+      class="side-nav bg-primary absolute end-0 top-0 block h-screen max-h-screen overflow-hidden shadow-md transition-all duration-300 ease-in-out lg:hidden"
+      :class="isSideOpened ? 'w-[300px]' : 'w-0'"
+    >
+      <div
+        class="mx-4 my-6 ms-auto flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full bg-gray-200 transition-colors duration-200 hover:bg-gray-400"
+        @click="closeSideMenu"
+      >
+        <UIcon name="i-lucide:x" class="text-xl" />
+      </div>
+      <ul class="ms-4 flex flex-col gap-3">
+        <li v-for="link in navLinks" :key="link.name">
+          <NuxtLinkLocale
+            :to="link.path"
+            class="text-xl"
+            @click="closeSideMenu"
+            >{{ $t(link.name) }}</NuxtLinkLocale
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+</template>
 <style scoped></style>

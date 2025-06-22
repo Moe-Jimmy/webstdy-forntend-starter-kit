@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import type { ICar } from "~/types/Car";
+
+const props = defineProps<{
+  car: ICar;
+}>();
+</script>
 <template>
   <UCard
     :ui="{ header: 'p-0 sm:px-0', footer: 'p-0 sm:px-0' }"
@@ -9,53 +16,54 @@
         <img
           :src="car.image"
           :alt="car.name"
-          class="w-full block h-[200px] object-contain"
+          class="block h-[200px] w-full object-contain"
+          loading="lazy"
         />
       </figure>
     </template>
-    <div class="flex justify-between items-center">
-      <ProductsWishlistBtn :car-id="car.id" />
+    <div class="flex items-center justify-between">
+      <WishlistBtn :car-id="car.id" />
       <div
-        class="bg-primary text-second-dark px-3 py-2 text-sm rounded-lg"
         v-if="car.model"
+        class="bg-primary text-second-dark rounded-lg px-3 py-2 text-sm"
       >
         {{ car.model }}
       </div>
     </div>
     <!-- title  -->
-    <h2 class="line-clamp-2 h-[60px] my-3 text-[20px] font-medium">
+    <h2 class="my-3 line-clamp-2 h-[60px] text-[20px] font-medium">
       {{ car.name }}
     </h2>
     <!-- description  -->
     <div class="grid grid-cols-2 gap-4">
-      <div class="flex items-center gap-3" v-if="car.year">
+      <div v-if="car.year" class="flex items-center gap-3">
         <UIcon
           name="i-material-symbols:calendar-month-outline"
           class="text-3xl"
         />
         <span class="text-sm">{{ car.year }}</span>
       </div>
-      <div class="flex items-center gap-3" v-if="car.brand">
+      <div v-if="car.brand" class="flex items-center gap-3">
         <UIcon name="i-mdi:car-side" class="text-3xl" />
         <span class="text-sm">{{ car.brand }}</span>
       </div>
-      <div class="flex items-center gap-3" v-if="car.fuel_type">
+      <div v-if="car.fuel_type" class="flex items-center gap-3">
         <UIcon name="i-tabler:engine" class="text-3xl" />
         <span class="text-sm">{{ car.fuel_type }}</span>
       </div>
-      <div class="flex items-center gap-3" v-if="car.gear_shifter">
+      <div v-if="car.gear_shifter" class="flex items-center gap-3">
         <UIcon name="i-hugeicons:gears" class="text-3xl" />
         <span class="text-sm">{{ car.gear_shifter }}</span>
       </div>
     </div>
     <!-- footer  -->
     <template #footer>
-      <div class="p-4 flex justify-between items-center">
+      <div class="flex items-center justify-between p-4">
         <div>
-          <div class="flex gap-2 items-center" v-if="car.show_status">
+          <div v-if="car.show_status" class="flex items-center gap-2">
             <span
               v-if="car.price_before_discount"
-              class="line-through text-gray-600"
+              class="text-gray-600 line-through"
               >{{ car.price_before_discount }}</span
             >
             <span v-if="car.price" class="text-second-dark">{{
@@ -77,19 +85,10 @@
         </div>
         <UIcon
           name="material-symbols:arrow-left-alt"
-          class="text-3xl hover:rotate-45 duration-200 transition-transform"
+          class="text-3xl transition-transform duration-200 hover:rotate-45"
         />
       </div>
     </template>
   </UCard>
 </template>
-
-<script setup lang="ts">
-import type { ICar } from "~/types/Car";
-
-const props = defineProps<{
-  car: ICar;
-}>();
-</script>
-
 <style scoped></style>

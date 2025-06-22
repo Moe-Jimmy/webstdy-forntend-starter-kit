@@ -11,9 +11,10 @@ export function useApi() {
   const { $i18n } = useNuxtApp();
   const config = useRuntimeConfig();
   const toast = useToast();
+  const loadingStore = useLoadingStore();
   // Create Axios instance
   const apiClient: AxiosInstance = axios.create({
-    baseURL: "https://admin.nasiralmutayri.com/api",
+    baseURL: config.public.apiBase,
     headers: {
       "Content-Type": "application/json",
     },
@@ -25,18 +26,24 @@ export function useApi() {
     (config: InternalAxiosRequestConfig) => {
       const locale = $i18n.locale.value;
       config.headers["Content-Language"] = locale === "en" ? "en" : "ar";
+      loadingStore.startLoading();
       return config;
     },
     (error) => {
+      loadingStore.stopLoading();
       return Promise.reject(error);
-    }
+    },
   );
 
   // Response interceptor: handle errors
   apiClient.interceptors.response.use(
-    (response: AxiosResponse) => response,
+    (response: AxiosResponse) => {
+      loadingStore.stopLoading();
+      return response;
+    },
     (error) => {
       if (error.response) {
+        loadingStore.stopLoading();
         toast.add({
           title: "Error",
           description:
@@ -47,7 +54,7 @@ export function useApi() {
         console.error(
           `API Error: ${error.response.status} - ${
             error.response.data?.message || ""
-          }`
+          }`,
         );
       } else {
         toast.add({
@@ -60,7 +67,7 @@ export function useApi() {
       }
 
       return Promise.reject(error);
-    }
+    },
   );
 
   return {
@@ -71,7 +78,7 @@ export function useApi() {
     post: async <T>(
       url: string,
       data: any,
-      config?: AxiosRequestConfig
+      config?: AxiosRequestConfig,
     ): Promise<T> => {
       const response = await apiClient.post<T>(url, data, config);
       return response.data;
@@ -79,7 +86,7 @@ export function useApi() {
     put: async <T>(
       url: string,
       data: any,
-      config?: AxiosRequestConfig
+      config?: AxiosRequestConfig,
     ): Promise<T> => {
       const response = await apiClient.put<T>(url, data, config);
       return response.data;
@@ -87,7 +94,7 @@ export function useApi() {
     patch: async <T>(
       url: string,
       data: any,
-      config?: AxiosRequestConfig
+      config?: AxiosRequestConfig,
     ): Promise<T> => {
       const response = await apiClient.patch<T>(url, data, config);
       return response.data;

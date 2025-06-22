@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import type { FormSchema } from "~/types/FormSchema";
+import { Form, Field, ErrorMessage } from "vee-validate";
+
+const schema = defineProps<{
+  schema: FormSchema;
+}>();
+
+function onSubmit(values: any) {
+  console.log("Form submitted! Values:", values);
+}
+</script>
 <template>
   <Form
     v-if="schema.schema.fields.length > 0"
@@ -92,18 +104,5 @@
 
   <ErrorMessage name="form" class="text-red-500 text-sm mt-1" v-else />
 </template>
-
-<script setup lang="ts">
-import type { FormSchema } from "~/types/FormSchema";
-import { Form, Field, ErrorMessage } from "vee-validate";
-
-const schema = defineProps<{
-  schema: FormSchema;
-}>();
-
-function onSubmit(values: any) {
-  console.log("Form submitted! Values:", values);
-}
-</script>
 
 <style scoped></style>

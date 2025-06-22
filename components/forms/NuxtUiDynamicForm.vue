@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import type { FormSchema } from "~/types/FormSchema";
+import { Form, Field, ErrorMessage } from "vee-validate";
+
+// Props
+const schema = defineProps<{
+  schema: FormSchema;
+}>();
+
+// Submit handler
+function onSubmit(values: any) {
+  console.log("Form submitted:", values);
+}
+</script>
 <template>
   <Form v-if="schema.schema.fields.length > 0" @submit="onSubmit">
     <div
@@ -63,17 +77,3 @@
     <UButton type="submit" color="primary">Submit</UButton>
   </Form>
 </template>
-<script setup lang="ts">
-import type { FormSchema } from "~/types/FormSchema";
-import { Form, Field, ErrorMessage } from "vee-validate";
-
-// Props
-const schema = defineProps<{
-  schema: FormSchema;
-}>();
-
-// Submit handler
-function onSubmit(values: any) {
-  console.log("Form submitted:", values);
-}
-</script>

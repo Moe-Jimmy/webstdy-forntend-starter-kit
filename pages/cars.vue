@@ -1,11 +1,3 @@
-<template>
-  <div
-    class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5"
-  >
-    <ProductsProductCard v-for="car in cars" :key="car.id" :car="car" />
-  </div>
-</template>
-
 <script setup lang="ts">
 import type { ApiResponse } from "~/types/ApiRespones";
 import type { ICar } from "~/types/Car";
@@ -22,5 +14,11 @@ const getAllCars = async () => {
 };
 getAllCars();
 </script>
-
+<template>
+  <div
+    class="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5"
+  >
+    <Card v-for="car in cars" :key="car.id" :car="car" />
+  </div>
+</template>
 <style scoped></style>

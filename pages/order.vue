@@ -1,9 +1,3 @@
-<template>
-  <div>
-    <FormsDynamicForm :schema="formSchema" />
-  </div>
-</template>
-
 <script setup lang="ts">
 import type { FormSchema } from "~/types/FormSchema";
 import * as Yup from "yup";
@@ -68,5 +62,9 @@ const formSchema: FormSchema = {
   ],
 };
 </script>
-
+<template>
+  <div>
+    <FormsDynamicForm :schema="formSchema" />
+  </div>
+</template>
 <style scoped></style>

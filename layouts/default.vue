@@ -1,3 +1,4 @@
+<script setup lang="ts"></script>
 <template>
   <header class="mb-10">
     <LayoutSideNav />
@@ -9,7 +10,4 @@
 
   <footer></footer>
 </template>
-
-<script setup lang="ts"></script>
-
 <style scoped></style>
